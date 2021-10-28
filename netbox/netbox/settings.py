@@ -159,15 +159,15 @@ if RELEASE_CHECK_URL:
 # Database
 #
 
-# Only PostgreSQL is supported
-if METRICS_ENABLED:
-    DATABASE.update({
-        'ENGINE': 'django_prometheus.db.backends.postgresql'
-    })
-else:
-    DATABASE.update({
-        'ENGINE': 'django.db.backends.postgresql'
-    })
+if DATABASE.get("ENGINE") not in ('django_prometheus.db.backends.postgresql', 'django.db.backends.postgresql', 'django_cockroachdb'):
+    if METRICS_ENABLED:
+        DATABASE.update({
+            'ENGINE': 'django_prometheus.db.backends.postgresql'
+        })
+    else:
+        DATABASE.update({
+            'ENGINE': 'django.db.backends.postgresql'
+        })
 
 DATABASES = {
     'default': DATABASE,
