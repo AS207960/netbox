@@ -46,7 +46,7 @@ class MACAddressField(models.Field):
             raise ValidationError("Invalid MAC address format: {}".format(value))
 
     def db_type(self, connection):
-        return 'macaddr'
+        return 'string'
 
     def get_prep_value(self, value):
         if not value:
