@@ -82,6 +82,8 @@ class CustomFieldModelSerializer(ValidatedModelSerializer):
 #
 
 class WritableNestedSerializer(BaseModelSerializer):
+    id = serializers.CharField()
+
     """
     Returns a nested representation of an object on read, but accepts only a primary key on write.
     """
