@@ -49,7 +49,7 @@ class IPNetworkField(BaseIPField):
     default_validators = [validators.prefix_validator]
 
     def db_type(self, connection):
-        return 'cidr'
+        return 'inet'
 
 
 IPNetworkField.register_lookup(lookups.IExact)
