@@ -61,7 +61,7 @@ class MACAddressField(models.Field):
             raise ValidationError(f"Invalid MAC address format: {value}")
 
     def db_type(self, connection):
-        return 'macaddr'
+        return 'text'
 
     def get_prep_value(self, value):
         if not value:
@@ -87,7 +87,7 @@ class WWNField(models.Field):
             raise ValidationError(f"Invalid WWN format: {value}")
 
     def db_type(self, connection):
-        return 'macaddr8'
+        return 'text'
 
     def get_prep_value(self, value):
         if not value:
